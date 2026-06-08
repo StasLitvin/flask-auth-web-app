@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Меню</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('dashboard') }}" class="list-group-item list-group-item-action active">
+                        Панель управления
+                    </a>
+                    <a href="{{ url_for('profile') }}" class="list-group-item list-group-item-action">
+                        Редактировать профиль
+                    </a>
+                    <a href="{{ url_for('change_password') }}" class="list-group-item list-group-item-action">
+                        Сменить пароль
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="list-group-item list-group-item-action text-danger">
+                        Выйти
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Добро пожаловать, {{ current_user.username }}! </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5>Email</h5>
+                                    <p class="mb-0">{{ current_user.email }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5>Дата регистрации</h5>
+                                    <p class="mb-0">{{ current_user.date_registered.strftime('%d.%m.%Y') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Ваши сообщения ({{ feedbacks|length }})</h5>
+                </div>
+                <div class="card-body">
+                    {% if feedbacks %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Тема</th>
+                                        <th>Дата</th>
+                                        <th>Сообщение</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for feedback in feedbacks %}
+                                    <tr>
+                                        <td><strong>{{ feedback.subject }}</strong></td>
+                                        <td>{{ feedback.date_sent.strftime('%d.%m.%Y %H:%M') }}</td>
+                                        <td>{{ feedback.message[:50] }}...</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center">У вас пока нет отправленных сообщений</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

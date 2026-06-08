@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация - Flask Website{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Регистрация</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('register') }}">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Имя пользователя</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email адрес</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="form-text">Мы никогда не будем делиться вашей электронной почтой.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" name="password" required
+                               minlength="6">
+                        <div class="form-text">Пароль должен содержать минимум 6 символов.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Подтвердите пароль</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                               required>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            Я согласен с условиями использования
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100"
+                            onclick='var _tmr = window._tmr || (window._tmr = []); _tmr.push({ id: "3710285", type: "reachGoal", goal: "registered", value: 10 }); return true;'>
+                        Зарегистрироваться
+                    </button>
+                </form>
+                <div class="text-center mt-3">
+                    <p>Уже есть аккаунт? <a href="#">Войти</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Проверка совпадения паролей
+    document.getElementById('confirm_password').addEventListener('input', function() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = this.value;
+
+        if (password !== confirmPassword) {
+            this.setCustomValidity('Пароли не совпадают');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+</script>
+{% endblock %}

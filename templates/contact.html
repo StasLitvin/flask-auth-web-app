@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Контакты - Flask Website{% endblock %}
+
+{% block content %}
+<h1>Свяжитесь с нами</h1>
+<p class="lead">Мы всегда рады ответить на ваши вопросы</p>
+
+<div class="row mt-5">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Форма обратной связи</h4>
+                <form method="POST" action="{{ url_for('contact') }}">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ваше имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Тема сообщения</label>
+                        <input type="text" class="form-control" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" onclick='var _tmr = window._tmr || (window._tmr = []); _tmr.push({ id: "3710285", type: "reachGoal", goal: "feedback", value: 10 }); return true;'>Отправить сообщение</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Наш адрес</h5>
+                <p class="card-text">
+                    г. Москва<br>
+                    ул. Примерная, д. 123<br>
+                    Бизнес-центр "Технопарк"
+                </p>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Контакты</h5>
+                <p class="card-text">
+                    <strong>Телефон:</strong> +7 (999) 123-45-67<br>
+                    <strong>Email:</strong> info@example.com<br>
+                    <strong>Часы работы:</strong> Пн-Пт 9:00-18:00
+                </p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Социальные сети</h5>
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn btn-sm btn-primary">Facebook</a>
+                    <a href="#" class="btn btn-sm btn-info text-white">Twitter</a>
+                    <a href="#" class="btn btn-sm btn-danger">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

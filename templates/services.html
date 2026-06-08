@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+{% block title %}Услуги - Flask Website{% endblock %}
+
+{% block content %}
+<h1>Наши услуги</h1>
+<p class="lead">Мы предлагаем широкий спектр услуг в области веб-разработки</p>
+
+<div class="row mt-5">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">Веб-разработка</h4>
+                <p class="card-text">Создание современных веб-сайтов и веб-приложений любой сложности.</p>
+                <ul>
+                    <li>Корпоративные сайты</li>
+                    <li>Интернет-магазины</li>
+                    <li>Веб-порталы</li>
+                    <li>Landing pages</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">Мобильная разработка</h4>
+                <p class="card-text">Разработка мобильных приложений для iOS и Android.</p>
+                <ul>
+                    <li>Нативные приложения</li>
+                    <li>Кроссплатформенные решения</li>
+                    <li>Progressive Web Apps</li>
+                    <li>Мобильная оптимизация</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">UI/UX Дизайн</h4>
+                <p class="card-text">Создание удобных и красивых интерфейсов для ваших продуктов.</p>
+                <ul>
+                    <li>Прототипирование</li>
+                    <li>Дизайн интерфейсов</li>
+                    <li>Юзабилити-тестирование</li>
+                    <li>Брендинг</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">Техническая поддержка</h4>
+                <p class="card-text">Обслуживание и поддержка ваших веб-проектов.</p>
+                <ul>
+                    <li>Мониторинг работоспособности</li>
+                    <li>Обновление контента</li>
+                    <li>Резервное копирование</li>
+                    <li>Консультации</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-5">
+    <h3>Заинтересованы в наших услугах?</h3>
+    <p>Свяжитесь с нами для получения подробной консультации</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Связаться с нами</a>
+</div>
+{% endblock %}
